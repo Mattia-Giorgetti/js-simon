@@ -10,7 +10,10 @@ function disappear(){
     clearTimeout(timer);
 }
 
+
+
 const insertButton = document.getElementById('inserisci_btn');
+const replayButton = document.getElementById('replay_btn');
 const myInput = document.getElementById('my_input');
 const risultato = document.getElementById('risultatoHTML');
 const listaNumeriUtente = document.getElementById('lista_numeri_utente');
@@ -27,12 +30,12 @@ while(numeri.length < numeriDaInserire){
     numeri.push(numeroCasuale);
   }
 }
-// console.log(numeri);
+
 const divHTML = document.getElementById('numeri');
 divHTML.innerHTML = numeri;
 
 // Timer diminuito rispetto alla richiesta per facilitare la correzione 
-const timer = setTimeout(disappear, 5000);
+const timer = setTimeout(disappear, 7000);
 
 
 insertButton.addEventListener('click', function insertNum(){
@@ -43,8 +46,10 @@ insertButton.addEventListener('click', function insertNum(){
 
         if(numeri.includes(inputUtente)){
             risultato.innerHTML = `hai vinto!...numeri giusti: ${numeriGiusti}`;
+            replayButton.classList.remove('d-none');
         } else {
             risultato.innerHTML = `hai perso... numeri sbagliati: ${numeriSbagliati}`;
+            replayButton.classList.remove('d-none');
         }
     } else {
         arrayInputUtente.push(inputUtente);
@@ -56,6 +61,7 @@ insertButton.addEventListener('click', function insertNum(){
         }
     }
 })
+replayButton.addEventListener('click', () => window.location.reload());
 
 
 
